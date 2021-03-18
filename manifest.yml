@@ -1,4 +1,4 @@
 applications:
-- name: examen1Backend
+- name: examen1
   random-route: true
   memory: 128M
