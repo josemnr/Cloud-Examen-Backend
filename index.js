@@ -6,9 +6,6 @@ const homePageRouter = require('./src/routes/home_page');
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use('/assets', express.static(path.join(__dirname, './public')));
-app.set("views", "views");
-app.set("view engine", "hbs");
 
 // Los routers se agregan a las rutas
 app.use('/', homePageRouter);

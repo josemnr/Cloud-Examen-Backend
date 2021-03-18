@@ -11,9 +11,9 @@ const toneAnalyzer = new ToneAnalyzerV3({
 });
 
 //Método para render de la página del Adder
-exports.renderHomePage = (req, res) => {
-    res.render("index");
-}
+// exports.renderHomePage = (req, res) => {
+//     res.render("index");
+// }
 
 exports.sendData = (req, res) => {
     console.log(req.body.entry)
@@ -26,14 +26,10 @@ exports.sendData = (req, res) => {
     toneAnalyzer.tone(toneParams)
     .then(toneAnalysis => {
     //   console.log(JSON.stringify(toneAnalysis, null, 2));
-        res.render("index", {
-            response:JSON.stringify(toneAnalysis, null, 2)
-        });
+        res.send(JSON.stringify(toneAnalysis, null, 2));
     })
     .catch(err => {
         console.log('error:', err);
-        res.render("index", {
-            response:JSON.stringify(err, null, 2)
-        });
+        res.send(JSON.stringify(err, null, 2));
     });
 }
