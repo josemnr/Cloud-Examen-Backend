@@ -1,0 +1,4 @@
+applications:
+- name: examen1Backend
+  random-route: true
+  memory: 128M
