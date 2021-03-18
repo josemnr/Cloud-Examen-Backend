@@ -1,7 +1,6 @@
 const {config} = require('../../config');
 const ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
 const { IamAuthenticator } = require('ibm-watson/auth');
-
 const toneAnalyzer = new ToneAnalyzerV3({
   version: '2017-09-21',
   authenticator: new IamAuthenticator({
@@ -9,6 +8,10 @@ const toneAnalyzer = new ToneAnalyzerV3({
   }),
   serviceUrl: config.serviceUrl,
 });
+
+exports.renderHomePage = (req, res) => {
+  res.end('IBM Tone Analyzer');
+}
 
 exports.sendData = (req, res) => {
     console.log(req.body.entry)
@@ -20,7 +23,6 @@ exports.sendData = (req, res) => {
       
     toneAnalyzer.tone(toneParams)
     .then(toneAnalysis => {
-    //   console.log(JSON.stringify(toneAnalysis, null, 2));
         res.send(JSON.stringify(toneAnalysis, null, 2));
     })
     .catch(err => {
